@@ -1,0 +1,51 @@
+using System;
+
+//algoritm buble
+
+namespace ConsoleApp1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+
+            int i, j, aux;
+
+            int[] x = {10,2,4 };
+
+
+            for (i=0;i<3 ;i++ ) {
+
+                for (j=0;j<3 ;j++ ) {
+
+                    try
+                    {
+
+                        if (x[j] > x[j+1])
+                        {
+
+                            aux = x[j];
+                            x[j] = x[j + 1];
+                            x[j + 1] = aux;
+
+                        }
+
+
+
+                    }
+                    catch {
+
+
+
+
+                    }
+
+
+
+                }
+
+
+               
+            }
+
