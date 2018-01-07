@@ -1,0 +1,54 @@
+//socket client on c#
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;            
+using System.Net.Sockets;    
+
+
+namespace pruebaconsolacliente
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Conectar();
+
+        }
+        public static void Conectar() {
+
+            Socket miPrimerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            IPEndPoint miDireccion = new IPEndPoint(IPAddress.Parse("192.168.1.45"), 9999);
+            try
+                {
+
+                    miPrimerSocket.Connect(miDireccion);                
+
+                    Console.WriteLine("Conectado con exito");
+
+                     miPrimerSocket.Close();
+
+                }
+
+                catch (Exception error)
+
+                {
+
+                    Console.WriteLine("Error: {0}", error.ToString());
+
+                }
+
+                Console.WriteLine("Presione cualquier tecla para terminar");
+
+                Console.ReadLine();
+
+
+            }
+    }
+}
+
