@@ -1,0 +1,82 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+//import this two libraries
+using System.Net;
+using System.Net.Sockets;
+
+//server
+
+
+//Socket test c# 1/2018
+
+namespace prueba__consola_socket
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            conectar();
+        }
+
+        public static void conectar() {
+            //creamos  el Socket
+            Socket misocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            
+            //Damos direccion y puerto
+            IPEndPoint direccion = new IPEndPoint(IPAddress.Parse("192.168.1.45"),9999);
+
+            //recibimos datos de socket
+
+           
+
+
+            //rodeamos de try and catch
+            try {
+
+                //hacemos un bind a la direccion
+                misocket.Bind(direccion);
+
+                //cabe destacar que la direccion es la propia del servidor
+
+                misocket.Listen(1);
+                // numero -> es la longitud maxima de la cola de conecciones, por el momento pondremos 1
+
+                //ponemos a escuchar
+                Console.WriteLine("Escuchando...");
+                Socket OtroNombre = misocket.Accept();
+
+                //Aceptamos datos
+                Byte[] Datossocket = new Byte[255];
+                int recibodatos = OtroNombre.Receive(Datossocket, 0, Datossocket.Length, 0);
+                Array.Resize(ref Datossocket,recibodatos);
+                String llegada = Encoding.Default.GetString(Datossocket);
+                Console.WriteLine("Cliente dice: "+llegada); //mostramos lo recibido
+
+
+
+                misocket.Close(); //Luego lo cerramos
+                // Acá debemos usar el anterior Socket
+
+
+            }
+            catch(Exception error)
+            {
+
+                Console.WriteLine("error");
+
+
+            }
+
+            Console.WriteLine("Presione cualquier tecla para terminar");
+            
+
+                Console.ReadLine();
+        } 
+
+
+
+    }
+}
