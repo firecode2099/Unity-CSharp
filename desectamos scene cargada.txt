@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Threading;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Accessibility;
+using UnityEngine.Playables;
+public class AAA : MonoBehaviour
+{
+
+    void Update()
+    {
+        // esto no dice si la escena esta cargada
+        var s = SceneManager.GetActiveScene().name;
+        
+        if (s == "f")
+        {
+
+            
+
+            print("La escena es " + s);
+
+        }
+        else {
+            print("No esta cargado ");
+        }
+       
+    }
+
+}
