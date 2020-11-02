@@ -1,0 +1,12 @@
+      
+      //Set Sptite white at contact------------------unity 2020
+      
+      
+       
+       //Find Shader set white
+          gameObject.GetComponent<SpriteRenderer>().material.shader = Shader.Find("GUI/Text Shader");
+          
+       //Find Shader set Deafault
+          gameObject.GetComponent<SpriteRenderer>().material.shader = Shader.Find("Sprites/Default");
+
+        
